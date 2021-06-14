@@ -30,7 +30,7 @@ public class StudentService {
         Optional <Student> studentOptional = studentRepository
                 .findStudentByEmail(student.getEmail());
         if(studentOptional.isPresent()) {
-    throw new IllegalStateException("Email jest zajęty");
+    throw new IllegalStateException("Email pobrany");
         }
         studentRepository.save(student);
     }
@@ -39,7 +39,7 @@ public class StudentService {
         boolean exist = studentRepository.existsById(studentId);
         if (!exist) {
             throw new IllegalStateException(
-                    "student o id: " +studentId + " nie istnieje");
+                    "student o podanym id " +studentId + " nie istnieje");
         }
         studentRepository.deleteById(studentId);
     }
